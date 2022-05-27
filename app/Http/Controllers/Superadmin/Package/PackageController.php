@@ -30,19 +30,19 @@ class PackageController extends Controller
             $filter_box      = 'show';
         }
 
-        $packages = Package::latest();
+        $packages            = Package::latest();
 
         if(isset($filter_name)){
-            $packages =  $packages->where('name', 'LIKE', "%".$filter_name."%");
+            $packages        =  $packages->where('name', 'LIKE', "%".$filter_name."%");
         }
         if(isset($filter_billing_type)){
-            $packages =  $packages->where('billing_type', $filter_billing_type);
+            $packages        =  $packages->where('billing_type', $filter_billing_type);
         }
         if(isset($filter_status)){
-            $packages =  $packages->where('status', $filter_status);
+            $packages        =  $packages->where('status', $filter_status);
         }
 
-        $packages = $packages->get();
+        $packages            = $packages->get();
 
         return view('superadmin.packages.list', compact('packages', 'filter_box', 'filter_name', 'filter_billing_type', 'filter_status'));
     }

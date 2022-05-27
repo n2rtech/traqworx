@@ -13,7 +13,7 @@
                 <label>Billing Type</label>
                 <div class="input-group">
                     <select class="form-control form-control-sm" name="billing_type">
-                        <option value="">All</option>
+                        <option value="" selected>All</option>
                         <option value="monthly" {{ $filter_billing_type == 'monthly' ? 'selected' : '' }} >Monthly</option>
                         <option value="annually" {{ $filter_billing_type == 'annually' ? 'selected' : '' }}>Annually</option>
                     </select>
@@ -23,9 +23,9 @@
                 <label>Package Status</label>
                 <div class="input-group">
                     <select class="form-control form-control-sm" name="status">
-                        <option value="">All</option>
-                        <option value="1" {{ $filter_status == 1 ? 'selected' : '' }}>Active</option>
-                        <option value="0" {{ $filter_status == 0 ? 'selected' : '' }}>Inactive</option>
+                        <option value="" selected>All</option>
+                        <option value="1" @isset($filter_status) @if($filter_status == 1) selected @endif @endisset>Active</option>
+                        <option value="0" @isset($filter_status) @if($filter_status == 0) selected @endif @endisset>Inactive</option>
                     </select>
                 </div>
             </div>
