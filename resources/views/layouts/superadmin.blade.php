@@ -19,6 +19,13 @@
 </head>
 
 <body class="loading" data-layout-config='{"leftSideBarTheme":"light","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <!-- Pre-loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="bouncing-loader"><div ></div><div></div><div></div></div>
+        </div>
+    </div>
+    <!-- End Preloader-->
     <div class="wrapper">
         @include('superadmin.sections.sidebar')
         <div class="content-page">
