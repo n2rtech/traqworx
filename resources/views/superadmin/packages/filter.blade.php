@@ -12,7 +12,7 @@
             <div class="col">
                 <label>Billing Type</label>
                 <div class="input-group">
-                    <select class="form-control form-control-sm" name="filtet_billing_type">
+                    <select class="form-control form-control-sm" name="billing_type">
                         <option value="">All</option>
                         <option value="monthly" {{ $filter_billing_type == 'monthly' ? 'selected' : '' }} >Monthly</option>
                         <option value="annually" {{ $filter_billing_type == 'annually' ? 'selected' : '' }}>Annually</option>
@@ -22,7 +22,7 @@
             <div class="col">
                 <label>Package Status</label>
                 <div class="input-group">
-                    <select class="form-control form-control-sm" name="filter_status">
+                    <select class="form-control form-control-sm" name="status">
                         <option value="">All</option>
                         <option value="1" {{ $filter_status == 1 ? 'selected' : '' }}>Active</option>
                         <option value="0" {{ $filter_status == 0 ? 'selected' : '' }}>Inactive</option>
