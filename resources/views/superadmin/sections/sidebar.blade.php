@@ -45,9 +45,9 @@
             </li>
 
             <li class="side-nav-item">
-                <a href="apps-chat.html" class="side-nav-link">
+                <a href="{{ route('superadmin.admins.index') }}" class="side-nav-link">
                     <i class="uil-building"></i>
-                    <span> Companies </span>
+                    <span> Admins </span>
                 </a>
             </li>
 
@@ -68,7 +68,7 @@
             <li class="side-nav-item">
                 <a href="javascript: void(0);" class="side-nav-link">
                     <i class="uil-users-alt"></i>
-                    <span> Superadmin </span>
+                    <span> Superadmins </span>
                 </a>
             </li>
 

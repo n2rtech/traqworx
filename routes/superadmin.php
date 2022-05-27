@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Superadmin\Admin\AdminController;
 use App\Http\Controllers\Superadmin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Superadmin\Auth\LoginController;
 use App\Http\Controllers\Superadmin\Auth\RegisterController;
@@ -52,4 +53,12 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     */
 
     Route::resource('packages', PackageController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admins Route
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('admins', AdminController::class);
 });
