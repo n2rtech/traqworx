@@ -38,7 +38,7 @@
 
 
             <li class="side-nav-item">
-                <a href="apps-calendar.html" class="side-nav-link">
+                <a href="{{ route('superadmin.packages.index') }}" class="side-nav-link">
                     <i class="uil uil-moneybag"></i>
                     <span> Packages </span>
                 </a>

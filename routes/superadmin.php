@@ -5,6 +5,7 @@ use App\Http\Controllers\Superadmin\Auth\LoginController;
 use App\Http\Controllers\Superadmin\Auth\RegisterController;
 use App\Http\Controllers\Superadmin\Auth\ResetPasswordController;
 use App\Http\Controllers\Superadmin\DashboardController;
+use App\Http\Controllers\Superadmin\Package\PackageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,4 +44,12 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.'], function () {
     */
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Packages Route
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('packages', PackageController::class);
 });
