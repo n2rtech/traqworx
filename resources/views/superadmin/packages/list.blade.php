@@ -19,6 +19,7 @@
                         <span class="font-12 text-muted ml-1">Total Packages</span>
                     </h4>
                 </div>
+                @include('superadmin.sections.flash-message')
             </div>
         </div>
 
@@ -44,8 +45,6 @@
                     <th>Action</th>
                 </tr>
             </thead>
-
-
             <tbody>
                 @foreach ($packages as $package)
                     <tr>
@@ -68,8 +67,16 @@
                             <a href="{{ route('superadmin.packages.edit', $package->id) }}"
                                 class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top"
                                 data-original-title="Edit"><i class="uil-pen"></i></a>
-                            <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="tooltip"
-                                data-placement="top" data-original-title="Delete"><i class="uil-trash"></i></button>
+
+                            <a href="javascript:void(0)" onclick="confirmDelete({{ $package->id }})"
+                                class="btn btn-sm btn-outline-danger" data-toggle="tooltip" data-placement="top"
+                                data-original-title="Delete"><i class="uil-trash"></i></a>
+
+                            <form id="delete-form{{ $package->id }}"
+                                action="{{ route('superadmin.packages.destroy', $package->id) }}" method="POST">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -79,19 +86,4 @@
 @endsection
 @push('scripts')
     @include('superadmin.sections.datatables.scripts')
-    <!-- Filter Box Scripts Start -->
-    <script>
-        $(document).ready(function(){
-            var filterBox = '{{ $filter_box }}';
-            if(filterBox === 'show'){
-                $("#filterBox").css('display', 'block');
-            }
-
-            $("#filter").click(function(){
-                $("#filterBox").slideToggle();
-            });
-
-        });
-    </script>
-    <!-- Filter Box Scripts End -->
 @endpush

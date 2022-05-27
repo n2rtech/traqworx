@@ -54,7 +54,7 @@ class PackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.packages.create');
     }
 
     /**
@@ -87,7 +87,8 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $package           = Package::find($id);
+        return view('superadmin.packages.edit', compact('package'));
     }
 
     /**
