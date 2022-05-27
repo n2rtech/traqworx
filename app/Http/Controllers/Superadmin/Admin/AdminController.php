@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Superadmin\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,9 +13,32 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filter_box          = 'hide';
+        $filter_name         = $request->name;
+        $filter_email        = $request->email;
+        $filter_status       = $request->status;
+
+        if(isset($filter_name) || isset($filter_email) || isset($filter_status)){
+            $filter_box      = 'show';
+        }
+
+        $admins            = Admin::latest();
+
+        if(isset($filter_name)){
+            $admins        =  $admins->where('name', 'LIKE', "%".$filter_name."%");
+        }
+        if(isset($filter_email)){
+            $admins        =  $admins->where('email', $filter_email);
+        }
+        if(isset($filter_status)){
+            $admins        =  $admins->where('status', $filter_status);
+        }
+
+        $admins            = $admins->get();
+
+        return view('superadmin.admins.list', compact('admins', 'filter_box', 'filter_name', 'filter_email', 'filter_status'));
     }
 
     /**
@@ -24,7 +48,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.admins.create');
     }
 
     /**
@@ -57,7 +81,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin           = Admin::find($id);
+        return view('superadmin.admins.edit', compact('admin'));
     }
 
     /**
